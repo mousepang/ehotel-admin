@@ -1,12 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
-import {
-  HashRouter,
-  Switch,
-  Route,
-  Link,
-  BrowserRouter,
-  useHistory,
-} from 'react-router-dom';
+import { HashRouter, Switch, Route, useHistory } from 'react-router-dom';
 import { Layout } from 'antd';
 import EHotelRoute from '../eHotelInfo/eHotelRoute';
 import Room from '../room/room';

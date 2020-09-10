@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react';
-import { Table, Button, Input, Spin } from 'antd';
+import { Table, Button, Spin } from 'antd';
 
 import './record.less';
 import RecordSearch from './record-search/record-search';
@@ -157,7 +157,7 @@ const data = [
 
 const Record: FC = () => {
   const [tableData, setTableData] = useState(data);
-  const [selectedKeys, selectedRows, getSelectRows] = useSelectedRows([]);
+  const [selectedKeys, , getSelectRows] = useSelectedRows([]);
   const { show, open, close, wrapperInfo, modifyInfoItem } = useInfoWrapper<
     IRecord
   >({
@@ -177,7 +177,7 @@ const Record: FC = () => {
     {
       title: '房间',
       dataIndex: 'room',
-      render: (text: string) => <a>{text}</a>,
+      render: (text: string) => <a href="#/">{text}</a>,
     },
     {
       title: '入住人',

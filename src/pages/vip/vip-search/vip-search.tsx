@@ -1,8 +1,7 @@
 import React from 'react';
-import { Row, Col, Input, Select, Button, Form, Modal, List } from 'antd';
+import { Row, Col, Input, Button, Modal, List } from 'antd';
 import Avatar from 'antd/lib/avatar/avatar';
 
-const { Item } = Form;
 
 export interface IVipSearchProps {
   info: string;

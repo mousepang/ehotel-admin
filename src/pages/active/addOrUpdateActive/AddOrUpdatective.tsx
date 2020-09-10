@@ -1,16 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import {
-  PageHeader,
-  Form,
-  Input,
-  DatePicker,
-  Upload,
-  Button,
-  Spin,
-  Modal,
-} from 'antd';
+import { PageHeader, Form, Input, DatePicker, Button, Spin, Modal } from 'antd';
 import { useHistory } from 'react-router-dom';
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import BraftEditor, { ControlType } from 'braft-editor';
 import 'braft-editor/dist/index.css';
 import { FormInstance } from 'antd/lib/form';
@@ -53,12 +43,9 @@ const controls = [
 
 const AddOrUpdateActive = (props: any) => {
   const history = useHistory();
-  const [uploadLoading, startUploadLoading] = useRequest();
   const [loading, startLoading] = useRequest(false);
   const [editorStr, setEditorStr] = useState<any>();
-  const [isUpdate, setIsUpdate] = useState(false)
-
-
+  const [isUpdate, setIsUpdate] = useState(false);
 
   const [activeData, setActiveData] = useState<any>({
     id: '',
@@ -68,8 +55,8 @@ const AddOrUpdateActive = (props: any) => {
     startTime: '',
     endTime: '',
     status: '',
-    detail:''
-  })
+    detail: '',
+  });
   // 表单的实例
   const formRef = useRef<FormInstance>();
   // 编辑器的实例
@@ -77,35 +64,33 @@ const AddOrUpdateActive = (props: any) => {
 
   // 将HTML字符串转换为编辑器所需要的EditorState实例
 
-
   //发请求 判断是否为修改
   useEffect(() => {
     //发请求
     if (props.match.params.id) {
-      setIsUpdate(true)
+      setIsUpdate(true);
       const data = {
         id: '798',
         title: '《糖豆人：终极淘汰赛》第二赛季',
-        imgs: ['https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-          'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'],
+        imgs: [
+          'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+          'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
+        ],
         desc:
           '《糖豆人：终极淘汰赛》Steam平台销量成功突破7,000,000份啦！不仅如此，我们还带来了全新的第二赛季内容大揭秘！炫酷的关卡、神秘的中世纪服装......快戳下面的视频先睹为快吧~',
         startTime: '2020-11-01',
         endTime: '2022-11-01',
         status: 'in_progress',
-        detail:'<p>Hello <b>World!</b></p>'
-      }
-      setActiveData(data)
-      setEditorStr( BraftEditor.createEditorState(data.detail))
-      console.log(editorStr)
-      formRef.current?.setFieldsValue(data)
+        detail: '<p>Hello <b>World!</b></p>',
+      };
+      setActiveData(data);
+      setEditorStr(BraftEditor.createEditorState(data.detail));
+      console.log(editorStr);
+      formRef.current?.setFieldsValue(data);
     }
-  }, [props])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props]);
   // 上传图片组件的配置
-  const uploadConfig = {
-    className: 'avatar-uploader',
-    action: 'https://baidu.com',
-  };
 
   // 提交表单
   const finishForm = (val: {
@@ -160,13 +145,12 @@ const AddOrUpdateActive = (props: any) => {
     formRef.current?.resetFields();
   };
 
-
   return (
     <div className="add-active-page">
       <PageHeader
         className="header"
         onBack={() => history.goBack()}
-        title={isUpdate ? "修改活动详情" : "添加新活动"}
+        title={isUpdate ? '修改活动详情' : '添加新活动'}
       />
       <Spin spinning={loading}>
         <Form
@@ -192,7 +176,10 @@ const AddOrUpdateActive = (props: any) => {
             <RangePicker />
           </Item>
           <Item label="宣传图">
-            <UploadImgs imgs={activeData.imgs} inMode={!!props.match.params.id}/>
+            <UploadImgs
+              imgs={activeData.imgs}
+              inMode={!!props.match.params.id}
+            />
           </Item>
           <Item
             label="活动简介"

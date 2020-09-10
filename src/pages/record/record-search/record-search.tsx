@@ -66,6 +66,7 @@ const RecordSearch: FC<IRecordSearchProps> = ({
     if (searchData['id']) {
       doSearch();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   /**

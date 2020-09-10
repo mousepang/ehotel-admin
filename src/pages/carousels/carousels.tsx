@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './carousels.less';
 import { Carousel, Image, Spin, Card, Upload, message } from 'antd';
 import useRequest from '../../hooks/useRequest';
@@ -29,14 +29,14 @@ const props = {
 
 const Carousels = () => {
   // 获取轮播图
-  const [{ data, loading, error }] = useRequest<{ code: number; data: [] }>({
+  const [{ data, loading }] = useRequest<{ code: number; data: [] }>({
     url:
       'https://www.barteam.cn:1239/hotels/swiper?id=5f15898e9e625204e0c20b29',
     method: 'get',
   });
 
   // 删除
-  const [{ data: updateData, request }] = useRequest<{
+  const [{ request }] = useRequest<{
     code: number;
     data: any;
   }>(

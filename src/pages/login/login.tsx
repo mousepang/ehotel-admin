@@ -58,6 +58,7 @@ const Login = () => {
       localStorage.setItem('loginname', loginData['data']['user']['nickname']);
       h.push('/');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loginData]);
 
   // 获取localStorage中的email
@@ -67,6 +68,7 @@ const Login = () => {
       setEmail(email as string);
       setRemember(true);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // 保存email到localStorage
@@ -76,6 +78,7 @@ const Login = () => {
     } else {
       localStorage.removeItem('remember_email');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isRemember]);
 
   return (
@@ -112,7 +115,9 @@ const Login = () => {
                 >
                   记住邮箱
                 </Checkbox>
-                <a>忘记密码</a>
+                <a href="#/" onClick={(e) => e.preventDefault}>
+                  忘记密码
+                </a>
               </div>
             </Item>
             <Item>

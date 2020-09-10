@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Spin, Table, Button, Avatar, Tag } from 'antd';
+import { Spin, Table, Avatar, Tag } from 'antd';
 import useRequest from '../../hooks/useRequest';
 import useSelectedRows from '../../hooks/useSelectedRows';
 import UserSearch from './user-search/user-search';
@@ -119,8 +119,10 @@ export default function User() {
           <>
             <Tag>普通用户</Tag>
             <a
+              href="#/"
               className="to-vip"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 startLoading();
                 const updateData = data.map((item) => {
                   if (item['key'] === user['key']) {
@@ -146,7 +148,7 @@ export default function User() {
 
   const [tableData, setTableData] = useState(data);
   const [loading, startLoading] = useRequest();
-  const [selectedKeys, selectedRows, getSelectRows] = useSelectedRows([]);
+  const [selectedKeys, , getSelectRows] = useSelectedRows([]);
 
   return (
     <div className="user">
